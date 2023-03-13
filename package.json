@@ -1,0 +1,14 @@
+{
+  "name": "2023-02-orleans-spe-p2-a",
+  "version": "1.0.0",
+  "description": "## Prerequisites - Install Node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
