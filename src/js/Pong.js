@@ -131,6 +131,12 @@ export default class Pong extends Phaser.Scene {
             this.pongBall.setVelocityY(0);
             this.paddle.setVelocityY(0);
             this.timer.paused = true;
+            this.time.addEvent({
+                delay: 1000,
+                callback: this.loose,
+                callbackScope: this,
+                loop: false
+            });
         }
         if (this.engage.isDown) {
             location.reload()
@@ -174,6 +180,9 @@ export default class Pong extends Phaser.Scene {
     }
     win(){
         this.scene.start('CatShoot');
+    }
+    loose(){
+        this.scene.start('Start');
     }
     newLevel() {
         if (this.chrono === 0 && this.life > 0) {
