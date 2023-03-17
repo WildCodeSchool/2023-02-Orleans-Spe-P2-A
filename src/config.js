@@ -1,14 +1,11 @@
 import CatShoot from "./js/CatShoot.js";
-import Phaser from "phaser";
 
 const config = {
     type: Phaser.AUTO,
-    width: 1000, // largeur en pixels
-    height: 600, // hauteur en pixels
+    width: 1920, // largeur en pixels
+    height: 1080, // hauteur en pixels
     parent: 'game-div',
-    dom: {
-        createContainer: true
-    },
+    transparent: true,
     physics: {
         // définition des parametres physiques
         default: "arcade", // mode arcade : le plus simple : des rectangles pour gérer les collisions. Pas de pentes
@@ -24,4 +21,3 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
-this.scene.start('CatShoot');

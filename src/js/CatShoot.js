@@ -4,12 +4,11 @@ class CatShoot extends Phaser.Scene {
     }
 
     preload() {
-        this.load.svg('catboss', 'assets/catBoss.svg');
-        this.load.svg('catminion', 'assets/catminion.svg');
-        this.load.svg('catpaws', 'assets/catpaws.svg');
-
-        this.load.audio("catsound", "assets/cats-meow2.mp3");
-        this.load.audio("catboss", "assets/angry-cat.mp3");
+        this.load.svg('catboss', './src/assets/catBoss.svg');
+        this.load.svg('catminion', './src/assets/catminion.svg');
+        this.load.svg('catpaws', './src/assets/catpaws.svg');
+        this.load.audio("catsound", "./src/assets/cats-meow2.mp3");
+        this.load.audio("catboss", "./src/assets/angry-cat.mp3");
     }
 
     create() {
@@ -23,7 +22,6 @@ class CatShoot extends Phaser.Scene {
         this.player.canShot = true;
 
         this.bullets = this.physics.add.group();
-
         this.player.setCollideWorldBounds(true);
         this.bullets.onWorldsBounds = true;
 
