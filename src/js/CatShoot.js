@@ -39,8 +39,8 @@ class CatShoot extends Phaser.Scene {
 
 
         for (let i = 0; i < 70; i++) {
-            let xx = Phaser.Math.Between(50, 1800);
-            let yy = Phaser.Math.Between(50, 350);
+            const xx = Phaser.Math.Between(50, 1800);
+            const yy = Phaser.Math.Between(50, 350);
             this.catMinion = this.physics.add.group({
                 key: 'catminion',
                 repeat: 0,
@@ -50,14 +50,14 @@ class CatShoot extends Phaser.Scene {
         }
 
         for (let i = 0; i < 1; i++) {
-            let x = Phaser.Math.Between(50, 1500);
-            let y = Phaser.Math.Between(50, 300);
+            const x = Phaser.Math.Between(50, 1500);
+            const y = Phaser.Math.Between(50, 300);
             this.catBoss = this.physics.add.sprite(x, y, 'catboss').setScale(1.2).refreshBody();
         }
 
         for (let i = 0; i < 20; i++) {
-            let xx = Phaser.Math.Between(50, 1800);
-            let yy = Phaser.Math.Between(50, 350);
+            const xx = Phaser.Math.Between(50, 1800);
+            const yy = Phaser.Math.Between(50, 350);
             this.catMinion = this.physics.add.group({
                 key: 'catminion',
                 repeat: 0,
@@ -155,7 +155,7 @@ class CatShoot extends Phaser.Scene {
             if (this.cursors.space.isDown) {
                 if (this.player.canShot === true) {
                     //on créer la balle avec sa vélocité/direction pour tirer
-                    let bullet = this.bullets.create(this.player.x, this.player.y, 'catpaws').setScale(0.2);
+                    const bullet = this.bullets.create(this.player.x, this.player.y, 'catpaws').setScale(0.2);
                     bullet.setVelocityY(-450);
                     this.player.canShot = false; // on désactive la possibilté de tirer
 
