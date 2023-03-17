@@ -2,7 +2,7 @@
 export default class Pong extends Phaser.Scene {
     // Constructor de la classe
     constructor() {
-        super({ key: "pong" }) //je précice le nom de la classe en tant qu'identifiant
+        super({ key: "pong"}) //je précice le nom de la classe en tant qu'identifiant
     }
 
     preload() {
@@ -172,13 +172,22 @@ export default class Pong extends Phaser.Scene {
             this.timer.paused = true;
         }
     }
-
+    win(){
+        this.scene.start('CatShoot');
+    }
     newLevel() {
         if (this.chrono === 0 && this.life > 0) {
             this.nextLevel.setVisible(true);
             this.pongBall.setVelocityX(0);
             this.pongBall.setVelocityY(0);
             this.paddle.setVelocityY(0);
+
+            this.time.addEvent({
+                delay: 1000,
+                callback: this.win,
+                callbackScope: this,
+                loop: false
+            });
         }
     }
 }
