@@ -1,5 +1,6 @@
 import Start from "./js/Start.js";
 import CatShoot from "./js/CatShoot.js";
+import EndGame from "./js/EndGame.js";
 
 const config = {
     type: Phaser.AUTO,
@@ -18,7 +19,7 @@ const config = {
             debug: false // permet de voir les hitbox et les vecteurs d'acceleration quand mis à true
         }
     },
-    scene: [Start,CatShoot]
+    scene: [Start, CatShoot, EndGame] // on définit les scenes du jeu.
 };
 
 const game = new Phaser.Game(config);
