@@ -1,4 +1,4 @@
-class CatShoot extends Phaser.Scene {
+export default class CatShoot extends Phaser.Scene {
     constructor() {
         super({key: "CatShoot"});
     }
@@ -108,7 +108,7 @@ class CatShoot extends Phaser.Scene {
 
     }
 
-     countdown() {
+    countdown() {
 
         if (this.score === 1) {
             this.timer.paused = true;
@@ -116,6 +116,13 @@ class CatShoot extends Phaser.Scene {
             this.successText = this.add.text(800, 600, "Bravo tu as réussi...", {
                 fontSize: "40px",
                 fill: "red"
+
+            });
+            this.time.addEvent({
+                delay: 1000,
+                callback: this.win,
+                callbackScope: this,
+                loop: false
             });
         }
         if (this.chrono > 0 && this.gameOver === false) {
@@ -137,9 +144,14 @@ class CatShoot extends Phaser.Scene {
         this.chronoText.setText("Chrono: " + this.chrono); //on raffraichi le chrono;
     }
 
-loose(){
-    this.scene.start("pong");
-}
+
+    loose() {
+        this.scene.start("pong");
+    }
+
+    win() {
+        this.scene.start('EndGame');
+    }
 
     killAlien(bullets, catBoss) {
         //on supprime la cible et la balle quand ils se rencontrent et on incremente le compteur score
@@ -179,5 +191,4 @@ loose(){
     }
 }
 
-export default CatShoot;
 
