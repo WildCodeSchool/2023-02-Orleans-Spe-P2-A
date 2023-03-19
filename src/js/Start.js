@@ -37,6 +37,7 @@ export default class Start extends Phaser.Scene {
 
         this.input.keyboard.on('keydown-SPACE', function (event) {
             this.scene.start('pong');
+            this.bgm.stop();
         }, this);
     }
 
