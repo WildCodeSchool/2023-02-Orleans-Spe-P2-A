@@ -12,23 +12,26 @@ export default class Pong extends Phaser.Scene {
         this.load.audio('PongPlop', './src/assets/pong_sound/plop.ogg');
         this.load.audio('PongBeep', './src/assets/pong_sound/beeep.ogg');
         this.load.audio('PongPeep', './src/assets/pong_sound/peeeeeep.ogg');
+        
+        
     }
 
     create() {
-
         this.isGameStarted = false;
         this.life = 1;
-        this.chrono = 50;
+        this.chrono = 50; 
         this.initialVelocityX = 500;
         this.initialVelocityY = 500;
 
         this.pongBall = this.physics.add.sprite(
             this.physics.world.bounds.width / 2,
-            this.physics.world.bounds.height / 2,
+            this.physics.world.bounds.height / 2, 
             'pongBall'
         ).setScale(0.4)
         this.pongBall.setCollideWorldBounds(true);
-        this.pongBall.setBounce(1, 1,)
+        this.pongBall.setBounce(1, 1,);
+        //this.pongBall.collideWorldBounds = true;
+        this.pongBall.body.onWorldBounds = true;
 
         this.paddle = this.physics.add.sprite(
             this.pongBall.body.width * 2,
@@ -52,9 +55,13 @@ export default class Pong extends Phaser.Scene {
         /*--ajout du son--*/
         this.physics.add.collider(this.pongBall, this.wall, this.beeep, null, this);
         this.physics.add.collider(this.pongBall, this.paddle, this.plop, null, this);
-
-        //to fix
-        this.physics.add.collider(this.pongBall, this.worldBounds, this.peeeeeep, null, this)
+        this.physics.world.on('worldbounds', (body, up, down, left, right) =>
+        {
+            if (up || down) {
+                this.pongPeep.play({ volume: 2 })
+            }
+        })
+        
 
         this.nextLevel = this.add.text(
             this.physics.world.bounds.width / 2,
@@ -163,8 +170,8 @@ export default class Pong extends Phaser.Scene {
     }
 
     // to fix
-    peeeeeep() {
-        if (this.physics.add.collider(this.pongBall, this.worldBounds)) {
+     peeeeeep(body, up, left, right) {
+        if (left || right) {
             this.pongPeep.play({ volume: 2 })
         };
     }
