@@ -1,6 +1,6 @@
 export default class Start extends Phaser.Scene {
     constructor() {
-        super({key: "Start"});
+        super({ key: "Start" });
     }
 
 
@@ -10,12 +10,14 @@ export default class Start extends Phaser.Scene {
     }
 
     create() {
+        let startBcg = document.getElementById('game-div');
+        startBcg.style.backgroundColor = "white";
         this.add.image(1000, 500, 'bg-start').setScale(.9);
 
         this.add.text(500, 100, "CRAZYGAME", {
-                fontSize: "100px",
-                fill: "#000000"
-            });
+            fontSize: "100px",
+            fill: "#000000"
+        });
 
         this.add.text(450, 200, "Un pong ? un shooter ? Des chats ?", {
             fontSize: "35px",
@@ -33,7 +35,7 @@ export default class Start extends Phaser.Scene {
             delay: 0,
             loop: true,
         }
-        if(!this.started) {
+        if (!this.started) {
             this.bgm.play(this.bgmConfig);
         }
 
@@ -42,5 +44,4 @@ export default class Start extends Phaser.Scene {
             this.started = true;
         }, this);
     }
-
 }

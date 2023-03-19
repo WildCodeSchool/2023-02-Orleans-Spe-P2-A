@@ -7,6 +7,8 @@ export default class EndGame extends Phaser.Scene {
     }
 
     create() {
+        let endBcg = document.getElementById('game-div');
+        endBcg.style.backgroundColor = "white";
         this.add.text(100, 100, "Wow vous ne le saviez surrement pas mais vous venez de battre la mafia des chats", {
             font: "30px",
             fill: "#000000"
