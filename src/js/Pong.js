@@ -11,9 +11,7 @@ export default class Pong extends Phaser.Scene {
         this.load.image('wall', './src/assets/img/wall.png');
         this.load.audio('PongPlop', './src/assets/pong_sound/plop.ogg');
         this.load.audio('PongBeep', './src/assets/pong_sound/beeep.ogg');
-        this.load.audio('PongPeep', './src/assets/pong_sound/peeeeeep.ogg');
-        
-        
+        this.load.audio('PongPeep', './src/assets/pong_sound/peeeeeep.ogg');   
     }
 
     create() {
@@ -22,7 +20,6 @@ export default class Pong extends Phaser.Scene {
         this.chrono = 50; 
         this.initialVelocityX = 500;
         this.initialVelocityY = 500;
-
         this.pongBall = this.physics.add.sprite(
             this.physics.world.bounds.width / 2,
             this.physics.world.bounds.height / 2, 
@@ -61,8 +58,6 @@ export default class Pong extends Phaser.Scene {
                 this.pongPeep.play({ volume: 2 })
             }
         })
-        
-
         this.nextLevel = this.add.text(
             this.physics.world.bounds.width / 2,
             this.physics.world.bounds.height / 2,
@@ -104,14 +99,12 @@ export default class Pong extends Phaser.Scene {
 
     update() {
         if (!this.isGameStarted) {
-
             this.pongBall.setVelocityX(this.initialVelocityX);
             this.pongBall.setVelocityY(this.initialVelocityY);
             this.isGameStarted = true;
         }
 
         if (this.pongBall.x < this.paddle.body.x / 2) {
-
             this.pongBall.setVelocityX(0);
             this.pongBall.setVelocityY(0);
             this.life--;
@@ -169,7 +162,6 @@ export default class Pong extends Phaser.Scene {
         };
     }
 
-    // to fix
      peeeeeep(body, up, left, right) {
         if (left || right) {
             this.pongPeep.play({ volume: 2 })
@@ -185,9 +177,11 @@ export default class Pong extends Phaser.Scene {
             this.timer.paused = true;
         }
     }
+
     win(){
         this.scene.start('CatShoot');
     }
+
     loose(){
         this.scene.start('Start');
     }
@@ -207,5 +201,3 @@ export default class Pong extends Phaser.Scene {
         }
     }
 }
-
-
