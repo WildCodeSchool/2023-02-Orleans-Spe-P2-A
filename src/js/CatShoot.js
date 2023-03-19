@@ -30,7 +30,7 @@ export default class CatShoot extends Phaser.Scene {
         this.bossMeow = this.sound.add("catboss");
 
         this.meowConfig = {
-            volume: 2,
+            volume: 3,
             delay: 0,
             loop: false,
         }
