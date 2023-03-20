@@ -29,6 +29,8 @@ export default class Pong extends Phaser.Scene {
         this.pongBall.setBounce(1, 1,);
         //this.pongBall.collideWorldBounds = true;
         this.pongBall.body.onWorldBounds = true;
+        this.pongBcg = document.getElementById('game-div');
+        this.pongBcg.style.backgroundColor = "black";
 
         this.paddle = this.physics.add.sprite(
             this.pongBall.body.width * 2,
