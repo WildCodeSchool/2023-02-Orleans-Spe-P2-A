@@ -12,8 +12,9 @@ export default class CatShoot extends Phaser.Scene {
     }
 
     create() {
+        this.startBcg = document.getElementById('game-div');
+        this.startBcg.style.backgroundColor = "white";
         this.player = this.physics.add.sprite(950, 450, 'catpaws').setScale(0.3);
-
 
         this.chrono = 35;
         this.gameOver = false;

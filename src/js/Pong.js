@@ -15,20 +15,20 @@ export default class Pong extends Phaser.Scene {
     }
 
     create() {
-
         this.isGameStarted = false;
         this.life = 1;
         this.chrono = 50;
         this.initialVelocityX = 500;
         this.initialVelocityY = 500;
-
         this.pongBall = this.physics.add.sprite(
             this.physics.world.bounds.width / 2,
             this.physics.world.bounds.height / 2,
             'pongBall'
         ).setScale(0.4)
         this.pongBall.setCollideWorldBounds(true);
-        this.pongBall.setBounce(1, 1,)
+        this.pongBall.setBounce(1, 1,);
+        //this.pongBall.collideWorldBounds = true;
+        this.pongBall.body.onWorldBounds = true;
 
         this.paddle = this.physics.add.sprite(
             this.pongBall.body.width * 2,
@@ -52,10 +52,12 @@ export default class Pong extends Phaser.Scene {
         /*--ajout du son--*/
         this.physics.add.collider(this.pongBall, this.wall, this.beeep, null, this);
         this.physics.add.collider(this.pongBall, this.paddle, this.plop, null, this);
-
-        //to fix
-        this.physics.add.collider(this.pongBall, this.worldBounds, this.peeeeeep, null, this)
-
+        this.physics.world.on('worldbounds', (body, up, down, left, right) =>
+        {
+            if (up || down) {
+                this.pongPeep.play({ volume: 2 })
+            }
+        })
         this.nextLevel = this.add.text(
             this.physics.world.bounds.width / 2,
             this.physics.world.bounds.height / 2,
@@ -97,14 +99,12 @@ export default class Pong extends Phaser.Scene {
 
     update() {
         if (!this.isGameStarted) {
-
             this.pongBall.setVelocityX(this.initialVelocityX);
             this.pongBall.setVelocityY(this.initialVelocityY);
             this.isGameStarted = true;
         }
 
         if (this.pongBall.x < this.paddle.body.x / 2) {
-
             this.pongBall.setVelocityX(0);
             this.pongBall.setVelocityY(0);
             this.life--;
@@ -162,9 +162,8 @@ export default class Pong extends Phaser.Scene {
         };
     }
 
-    // to fix
-    peeeeeep() {
-        if (this.physics.add.collider(this.pongBall, this.worldBounds)) {
+     peeeeeep(body, up, left, right) {
+        if (left || right) {
             this.pongPeep.play({ volume: 2 })
         };
     }
@@ -178,9 +177,11 @@ export default class Pong extends Phaser.Scene {
             this.timer.paused = true;
         }
     }
+
     win(){
         this.scene.start('CatShoot');
     }
+
     loose(){
         this.scene.start('Start');
     }
@@ -200,5 +201,3 @@ export default class Pong extends Phaser.Scene {
         }
     }
 }
-
-
