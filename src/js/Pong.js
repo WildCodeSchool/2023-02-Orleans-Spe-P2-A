@@ -11,7 +11,7 @@ export default class Pong extends Phaser.Scene {
         this.load.image('wall', './src/assets/img/wall.png');
         this.load.audio('PongPlop', './src/assets/pong_sound/plop.ogg');
         this.load.audio('PongBeep', './src/assets/pong_sound/beeep.ogg');
-        this.load.audio('PongPeep', './src/assets/pong_sound/peeeeeep.ogg');  
+        this.load.audio('PongPeep', './src/assets/pong_sound/peeeeeep.ogg');
     }
 
     create() {
