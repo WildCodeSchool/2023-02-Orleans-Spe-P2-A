@@ -10,8 +10,8 @@ export default class Start extends Phaser.Scene {
     }
 
     create() {
-        let startBcg = document.getElementById('game-div');
-        startBcg.style.backgroundColor = "white";
+        this.startBcg = document.getElementById('game-div');
+        this.startBcg.style.backgroundColor = "white";
         this.add.image(1000, 500, 'bg-start').setScale(.9);
 
         this.add.text(500, 100, "CRAZYGAME", {
