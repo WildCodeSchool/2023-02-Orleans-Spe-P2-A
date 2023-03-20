@@ -11,18 +11,18 @@ export default class Pong extends Phaser.Scene {
         this.load.image('wall', './src/assets/img/wall.png');
         this.load.audio('PongPlop', './src/assets/pong_sound/plop.ogg');
         this.load.audio('PongBeep', './src/assets/pong_sound/beeep.ogg');
-        this.load.audio('PongPeep', './src/assets/pong_sound/peeeeeep.ogg');   
+        this.load.audio('PongPeep', './src/assets/pong_sound/peeeeeep.ogg');  
     }
 
     create() {
         this.isGameStarted = false;
         this.life = 1;
-        this.chrono = 50; 
+        this.chrono = 50;
         this.initialVelocityX = 500;
         this.initialVelocityY = 500;
         this.pongBall = this.physics.add.sprite(
             this.physics.world.bounds.width / 2,
-            this.physics.world.bounds.height / 2, 
+            this.physics.world.bounds.height / 2,
             'pongBall'
         ).setScale(0.4)
         this.pongBall.setCollideWorldBounds(true);
