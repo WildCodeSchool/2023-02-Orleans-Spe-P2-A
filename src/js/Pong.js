@@ -17,7 +17,7 @@ export default class Pong extends Phaser.Scene {
     create() {
         this.isGameStarted = false;
         this.life = 1;
-        this.chrono = 50;
+        this.chrono = 30;
         this.initialVelocityX = 500;
         this.initialVelocityY = 500;
         this.pongBall = this.physics.add.sprite(
@@ -84,7 +84,7 @@ export default class Pong extends Phaser.Scene {
             loop: true
         });
 
-        this.chronoText = this.add.text(16, 100, "Chrono: 50", {
+        this.chronoText = this.add.text(16, 100, "Chrono: 30", {
             fontSize: "24px",
             fill: "#FFFFFF" //Couleur de l'écriture
         });
@@ -144,8 +144,8 @@ export default class Pong extends Phaser.Scene {
             location.reload()
         }
 
-        if (this.chrono <= 40) {
-            this.pongBall.setBounce(1.03, 1.03)
+        if (this.chrono <= 15) {
+            this.pongBall.setBounce(1.11, 1.11)
         }
 
         this.newLevel();
